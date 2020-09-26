@@ -18,17 +18,18 @@ public class DbSessionHolder {
     private static final List<Class> ENTITIES = asList(Author.class, Book.class);
 
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_PASSWORD = "A0B1C2_ZZ_$aatttfff";
 
     //H2 - in memory database
-    private static final String DB_URL = "jdbc:h2:~/test";
-    private static final String DB_DRIVER = "org.h2.Driver";
-    private static final String DB_DIALECT = "org.hibernate.dialect.H2Dialect";
+//    private static final String DB_URL = "jdbc:h2:~/test";
+//    private static final String DB_DRIVER = "org.h2.Driver";
+//    private static final String DB_DIALECT = "org.hibernate.dialect.H2Dialect";
 
     //MySql
-    // private static final String DB_URL = "jdbc:mysql://localhost:3306/library?useSSL=false&serverTimezone=UTC";
-    // private static final String DB_DRIVER = "org.hibernate.dialect.MySQL5Dialect";
-    // private static final String DB_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
+
+     private static final String DB_URL = "jdbc:mysql://localhost:3306/library?useSSL=false&serverTimezone=UTC";
+     private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+     private static final String DB_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
 
     private static SessionFactory sessionFactory;
 
