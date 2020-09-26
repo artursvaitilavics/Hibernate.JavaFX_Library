@@ -10,8 +10,10 @@ public class Review {
     @Column(name = "reviewId")
     private Integer reviewId;
 
+    @Column(name = "bookScore")
     private Integer bookScore;
 
+    @Column(name = "reviewComment")
     private String reviewComment;
 
     @ManyToOne
