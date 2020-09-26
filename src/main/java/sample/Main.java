@@ -17,5 +17,7 @@ public class Main { //extends Application {
      //   launch(args);
         //TODO DB operations
         DbSessionHolder.shutdown();
+
+        System.out.println("MAIN");
     }
 }
