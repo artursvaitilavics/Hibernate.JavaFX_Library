@@ -18,8 +18,19 @@ public class Author {
     @Column(name = "authorSurname")
     private String surName;
 
+    @OneToMany(mappedBy = "authors")
+    private Set<Book> books;
+
     public Integer getId() {
         return Id;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public void setId(Integer id) {

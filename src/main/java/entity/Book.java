@@ -12,12 +12,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
     private Integer id;
+
     @Column(name = "bookTitle")
     private String title;
+
     @Column(name = "bookDescription")
     private String description;
-    @Column(name = "authorId")
-    private Integer authorId;
+
+    @ManyToOne
+    @JoinColumn(name = "authorId")
+    private Author author;
 
     public Integer getId() {
         return id;
@@ -43,12 +47,12 @@ public class Book {
         this.description = description;
     }
 
-    public Integer getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Integer authorId) {
-        this.authorId = authorId;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override
@@ -57,7 +61,6 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", authorId=" + authorId +
                 '}';
     }
 }
