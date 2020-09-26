@@ -13,23 +13,21 @@ public class Review {
     @Column(name = "bookScore")
     private Integer bookScore;
 
-    public Integer getBookId() {
-        return bookId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "bookId")
+    private Book book;
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
 
     @Column(name = "reviewComment")
     private String reviewComment;
 
-    @Column(name = "bookId")
-    private Integer bookId;
+    public Book getBook() {
+        return book;
+    }
 
-//    @ManyToOne
-//    @JoinColumn(name = "bookId")
-//    private Book book;
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     public Integer getReviewId() {
         return reviewId;
@@ -55,13 +53,7 @@ public class Review {
         this.reviewComment = reviewComment;
     }
 
-//    public Book getBook() {
-//        return book;
-//    }
-//
-//    public void setBook(Book book) {
-//        this.book = book;
-//    }
+
 }
 
 

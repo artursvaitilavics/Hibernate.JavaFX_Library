@@ -16,23 +16,26 @@ public class Author {
     @Column(name = "authorName")
     private String name;
 
+
     @Column(name = "authorSurname")
     private String surName;
 
-//    @OneToMany(mappedBy = "author")
-//    private List<Book> books;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
+
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
 
     public Integer getId() {
         return Id;
     }
-
-//    public List<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(List<Book> books) {
-//        this.books = books;
-//    }
 
     public void setId(Integer id) {
         Id = id;

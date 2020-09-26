@@ -21,13 +21,34 @@ public class Book {
     @Column(name = "bookDescription")
     private String description;
 
-    @Column(name = "authorId")
-    private Integer authorId;
+
+    @OneToMany(mappedBy = "book")
+    private List<Review> reviews;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "authorId")
+    private Author author;
+
 
     public Integer getId() {
         return id;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     public void setId(Integer id) {
         this.id = id;
