@@ -23,6 +23,10 @@ public class Book {
     @JoinColumn(name = "authorId")
     private Author author;
 
+
+    @OneToMany(mappedBy = "reviews")
+    private Set<Review> reviews;
+
     public Integer getId() {
         return id;
     }
