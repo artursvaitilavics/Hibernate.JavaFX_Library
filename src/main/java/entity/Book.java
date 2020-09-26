@@ -1,7 +1,9 @@
 package entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,7 +11,7 @@ import java.util.Set;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bookId")
     private Integer id;
 
@@ -19,17 +21,13 @@ public class Book {
     @Column(name = "bookDescription")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "authorId")
-    private Author author;
-
-
-    @OneToMany(mappedBy = "reviews")
-    private Set<Review> reviews;
+    @Column(name = "authorId")
+    private Integer authorId;
 
     public Integer getId() {
         return id;
     }
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -51,13 +49,6 @@ public class Book {
         this.description = description;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
 
     @Override
     public String toString() {

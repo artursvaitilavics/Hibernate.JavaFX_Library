@@ -1,6 +1,7 @@
 package configuration;
 
 import entity.Book;
+import entity.Review;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -15,7 +16,7 @@ import static java.util.Arrays.asList;
 
 public class DbSessionHolder {
 
-    private static final List<Class> ENTITIES = asList(Author.class, Book.class);
+    private static final List<Class> ENTITIES = asList(Author.class, Book.class, Review.class);
 
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "A0B1C2_ZZ_$aatttfff";
