@@ -25,7 +25,7 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Review> reviews;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "authorId")
     private Author author;
 

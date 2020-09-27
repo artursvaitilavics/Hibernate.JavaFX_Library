@@ -8,7 +8,7 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reviewId")
-    private Integer reviewId;
+    private Integer id;
 
     @Column(name = "bookScore")
     private Integer bookScore;
@@ -29,12 +29,12 @@ public class Review {
         this.book = book;
     }
 
-    public Integer getReviewId() {
-        return reviewId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setReviewId(Integer reviewId) {
-        this.reviewId = reviewId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getBookScore() {

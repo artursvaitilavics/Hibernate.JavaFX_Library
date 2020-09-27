@@ -1,4 +1,4 @@
-package dao;
+package Repository;
 
 import configuration.DbSessionHolder;
 import entity.Author;
