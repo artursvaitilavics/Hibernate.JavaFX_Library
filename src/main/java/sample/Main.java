@@ -33,11 +33,15 @@ public class Main extends Application {
         Author author0002 = new Author("Burudukio", "Kalnieties");
         Author author0003 = new Author("Teftelu", "Dzejotajs");
         Author author0004 = new Author("Astra", "Aspazija");
-        author0002.setId(5);
+//        author0002.setId(4);
+
+        author0001.setName("Džonijs");
+        author0001.setId(3);
 
         AuthorRepository authorRepository = new AuthorRepository();
+        authorRepository.update(author0001);
 
-        authorRepository.delete(author0002);
+//        authorRepository.delete(author0002);
 //        authorRepository.save(author0001);
 //        authorRepository.save(author0002);
 //        authorRepository.save(author0003);
