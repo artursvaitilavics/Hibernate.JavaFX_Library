@@ -28,17 +28,20 @@ public class Main extends Application {
 
         launch(args);
 
+
         Author author0001 = new Author("Visvaldis", "Galkasto");
         Author author0002 = new Author("Burudukio", "Kalnieties");
         Author author0003 = new Author("Teftelu", "Dzejotajs");
         Author author0004 = new Author("Astra", "Aspazija");
+        author0002.setId(5);
 
         AuthorRepository authorRepository = new AuthorRepository();
 
-        authorRepository.save(author0001);
-        authorRepository.save(author0002);
-        authorRepository.save(author0003);
-        authorRepository.save(author0004);
+        authorRepository.delete(author0002);
+//        authorRepository.save(author0001);
+//        authorRepository.save(author0002);
+//        authorRepository.save(author0003);
+//        authorRepository.save(author0004);
 
         //TODO DB operations
         DbSessionHolder.shutdown();
