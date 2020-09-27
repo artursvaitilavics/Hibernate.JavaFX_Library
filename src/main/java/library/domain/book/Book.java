@@ -81,6 +81,10 @@ public class Book {
     }
 
 
+    public String getAuthorFullName() {
+        return getAuthor().getSurName();
+    }
+
     @Override
     public String toString() {
         return "Book{" +
