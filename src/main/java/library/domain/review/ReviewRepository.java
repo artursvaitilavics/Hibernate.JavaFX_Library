@@ -1,6 +1,6 @@
-package Repository;
+package library.domain.review;
 
-import entity.Review;
+import library.repository.CrudRepository;
 
 import java.util.List;
 

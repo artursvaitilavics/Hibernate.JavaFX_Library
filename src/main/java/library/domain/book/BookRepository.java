@@ -1,8 +1,8 @@
-package Repository;
-
-import entity.Book;
+package library.domain.book;
 
 import java.util.List;
+import library.repository.CrudRepository;
+
 
 public class BookRepository extends CrudRepository<Book> {
 

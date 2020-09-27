@@ -1,4 +1,6 @@
-package entity;
+package library.domain.review;
+
+import library.domain.book.Book;
 
 import javax.persistence.*;
 

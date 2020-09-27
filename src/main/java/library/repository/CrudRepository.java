@@ -1,7 +1,5 @@
-package Repository;
+package library.repository;
 
-
-import configuration.DbSessionHolder;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,17 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
+import library.configuration.DbSessionHolder;
 
 public abstract class CrudRepository<T> {
-
-    public T findOne(Integer id, Class<T> clazz) {
-        try {
-            return openSession().find(clazz, id);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
 
     public void save(T entity) {
         Transaction transaction = null;
@@ -42,6 +32,15 @@ public abstract class CrudRepository<T> {
 
     public void delete(T entity) {
         runInTransaction((session) -> session.delete(entity));
+    }
+
+    protected T findOne(Integer id, Class<T> clazz) {
+        try {
+            return openSession().find(clazz, id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     private void runInTransaction(Consumer<Session> operation) {

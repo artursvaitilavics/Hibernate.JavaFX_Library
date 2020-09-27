@@ -1,6 +1,5 @@
-package Repository;
-
-import entity.Author;
+package library.domain.author;
+import library.repository.CrudRepository;
 
 import java.util.List;
 

@@ -1,55 +1,33 @@
 package sample;
 
-import Repository.AuthorRepository;
-import Repository.CrudRepository;
-import configuration.DbSessionHolder;
-import entity.Author;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.List;
+import library.configuration.DbSessionHolder;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("/ui/main/main.fxml"));
+        primaryStage.setTitle("Library");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
     public static void main(String[] args) {
+        new Thread((DbSessionHolder::getInstance)).start();
         DbSessionHolder.getInstance();
 
         launch(args);
 
 
-        Author author0001 = new Author("Visvaldis", "Galkasto");
-        Author author0002 = new Author("Burudukio", "Kalnieties");
-        Author author0003 = new Author("Teftelu", "Dzejotajs");
-        Author author0004 = new Author("Astra", "Aspazija");
-//        author0002.setId(4);
 
-        author0001.setName("Džonijs");
-        author0001.setId(3);
-
-        AuthorRepository authorRepository = new AuthorRepository();
-        authorRepository.update(author0001);
-
-//        authorRepository.delete(author0002);
-//        authorRepository.save(author0001);
-//        authorRepository.save(author0002);
-//        authorRepository.save(author0003);
-//        authorRepository.save(author0004);
 
         //TODO DB operations
         DbSessionHolder.shutdown();
 
-        System.out.println("MAIN");
     }
 }
