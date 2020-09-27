@@ -23,6 +23,13 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Book> books;
 
+    public Author() {
+    }
+
+    public Author(String name, String surName) {
+        this.name = name;
+        this.surName = surName;
+    }
 
     public List<Book> getBooks() {
         return books;

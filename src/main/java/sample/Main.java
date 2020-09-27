@@ -10,6 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main extends Application {
 
     @Override
@@ -23,15 +26,19 @@ public class Main extends Application {
     public static void main(String[] args) {
         DbSessionHolder.getInstance();
 
-           launch(args);
+        launch(args);
 
-
-        Author author0002 = new Author();
-        author0002.setName("Rainis");
-        author0002.setSurName("Raininsons");
+        Author author0001 = new Author("Visvaldis", "Galkasto");
+        Author author0002 = new Author("Burudukio", "Kalnieties");
+        Author author0003 = new Author("Teftelu", "Dzejotajs");
+        Author author0004 = new Author("Astra", "Aspazija");
 
         AuthorRepository authorRepository = new AuthorRepository();
+
+        authorRepository.save(author0001);
         authorRepository.save(author0002);
+        authorRepository.save(author0003);
+        authorRepository.save(author0004);
 
         //TODO DB operations
         DbSessionHolder.shutdown();
