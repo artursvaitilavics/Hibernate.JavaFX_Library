@@ -19,7 +19,7 @@ public class DbSessionHolder {
     private static final List<Class> ENTITIES = asList(Author.class, Book.class, Review.class);
 
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "A0B1C2_ZZ_$aatttfff";
+    private static final String DB_PASSWORD = "Ed6130";
 
     //H2 - in memory database
 //    private static final String DB_URL = "jdbc:h2:~/test";
