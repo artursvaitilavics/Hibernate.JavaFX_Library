@@ -21,44 +21,36 @@ public class AuthorAddController implements Initializable {
     @FXML
     private JFXTextField surName;
 
-    @FXML private StackPane rootPane;
+    @FXML
+    private StackPane rootPane;
     private Integer authorId;
 
     private Author editable;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("AUTHOR ADD CONTROLLER");
+
     }
 
     public void setEditable(Author author) {
         this.editable = author;
         this.name.setText(author.getName());
         this.surName.setText(author.getSurName());
-//        this.authorId.setText(author.getAuthor().getId().toString());
     }
 
     @FXML
     private void addAuthor(ActionEvent event) {
-        String authorName = this.name.getText();
-        String authorSurName = this.surName.getText();
-
-//        No good, if working, fix bellow
-        authorRepository.save(new Author(authorName, authorSurName));
+        String authorName = name.getText();
+        String authorSurName = surName.getText();
+        System.out.println(authorName + " " + authorSurName);
 
 
-        if (authorName.isEmpty() || authorSurName.isEmpty() /*|| bookAuthorId.isEmpty()*/) {
-            //TODO show user alert that all fields have to be filled
+        if (authorName.isEmpty() || authorSurName.isEmpty()) {
+//            //TODO show user alert that all fields have to be filled
             System.out.println("Author fields are empty");
             return;
         }
 
-//        Integer authorId = Integer.parseInt(bookAuthorId);
-//        Author author = authorRepository.findOne(authorId);
-//        if (author == null) {
-//            //TODO author with such ID doesn't exist, display error to user!
-//            return;
-//        }
 
         if (editable == null) {
             authorRepository.save(new Author(authorName, authorSurName));
@@ -66,7 +58,6 @@ public class AuthorAddController implements Initializable {
             Author author1 = authorRepository.findOne(editable.getId());
             author1.setName(authorName);
             author1.setSurName(authorSurName);
-//            author1.setAuthor(author);
             authorRepository.update(author1);
         }
         clearEntries();
@@ -82,7 +73,6 @@ public class AuthorAddController implements Initializable {
         editable = null;
         name.clear();
         surName.clear();
-//        authorId.clear();
     }
 
     private void closeStage() {
