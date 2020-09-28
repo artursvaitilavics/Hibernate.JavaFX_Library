@@ -33,7 +33,7 @@ public class AuthorController implements Initializable {
     }
 
     @FXML
-    private void editBook(ActionEvent event) {
+    private void editAuthor(ActionEvent event) {
         Author author = table.getSelectionModel().getSelectedItem();
         if (author == null) {
             return;
@@ -44,7 +44,7 @@ public class AuthorController implements Initializable {
     }
 
     @FXML
-    private void deleteBook(ActionEvent event) {
+    private void deleteAuthor(ActionEvent event) {
         Author author = table.getSelectionModel().getSelectedItem();
         if (author == null) {
             return;

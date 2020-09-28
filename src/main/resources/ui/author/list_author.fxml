@@ -11,7 +11,7 @@
             </columns>
         </TableView>
       <Button fx:id="addButton" layoutY="358.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="36.0" prefWidth="91.0" text="Add" />
-      <Button fx:id="deleteButton" layoutX="204.0" layoutY="358.0" mnemonicParsing="false" onAction="#deleteBook" prefHeight="36.0" prefWidth="91.0" text="Delete" />
-      <Button fx:id="editButton" layoutX="103.0" layoutY="358.0" mnemonicParsing="false" onAction="#editBook" prefHeight="36.0" prefWidth="91.0" text="Edit" />
+      <Button fx:id="deleteButton" layoutX="204.0" layoutY="358.0" mnemonicParsing="false" onAction="#deleteAuthor" prefHeight="36.0" prefWidth="91.0" text="Delete" />
+      <Button fx:id="editButton" layoutX="103.0" layoutY="358.0" mnemonicParsing="false" onAction="#editAuthor" prefHeight="36.0" prefWidth="91.0" text="Edit" />
     </children>
 </Pane>

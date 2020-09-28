@@ -23,7 +23,6 @@ public class AuthorAddController implements Initializable {
 
     @FXML
     private StackPane rootPane;
-    private Integer authorId;
 
     private Author editable;
 
@@ -42,12 +41,10 @@ public class AuthorAddController implements Initializable {
     private void addAuthor(ActionEvent event) {
         String authorName = name.getText();
         String authorSurName = surName.getText();
-        System.out.println(authorName + " " + authorSurName);
 
 
         if (authorName.isEmpty() || authorSurName.isEmpty()) {
 //            //TODO show user alert that all fields have to be filled
-            System.out.println("Author fields are empty");
             return;
         }
 
