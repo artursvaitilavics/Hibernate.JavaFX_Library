@@ -5,7 +5,9 @@ import library.domain.author.Author;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -23,8 +25,8 @@ public class Book {
     private String description;
 
 
-    @OneToMany(mappedBy = "book")
-    private List<Review> reviews;
+    @OneToMany(mappedBy = "book", orphanRemoval = true)
+    private Set<Review> reviews = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "authorId")
@@ -44,11 +46,11 @@ public class Book {
         return id;
     }
 
-    public List<Review> getReviews() {
+    public Set<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<Review> reviews) {
+    public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
     }
 

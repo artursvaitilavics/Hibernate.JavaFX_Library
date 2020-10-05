@@ -3,6 +3,7 @@ package library.domain.author;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import library.domain.author.add.AuthorAddController;
+import library.domain.book.Book;
+import library.domain.book.BookRepository;
 import library.view.ViewLoader;
 
 public class AuthorController implements Initializable {
@@ -46,6 +49,11 @@ public class AuthorController implements Initializable {
     @FXML
     private void deleteAuthor(ActionEvent event) {
         Author author = table.getSelectionModel().getSelectedItem();
+//        Set<Book> books = author.getBooks();
+//        books.forEach(book -> {
+//            BookRepository bookRepository = new BookRepository();
+//            bookRepository.delete(book);
+//        });
         if (author == null) {
             return;
         }
@@ -63,8 +71,6 @@ public class AuthorController implements Initializable {
         TableColumn<Author, String> column3 = new TableColumn<>("Surname");
         column3.setCellValueFactory(new PropertyValueFactory<>("surName"));
 
-//        TableColumn<Author, String> column4 = new TableColumn<>("Review");
-//        column4.setCellValueFactory(new PropertyValueFactory<>("review"));
 
         table.getColumns().add(column1);
         table.getColumns().add(column2);

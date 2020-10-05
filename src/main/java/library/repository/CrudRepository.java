@@ -48,11 +48,13 @@ public abstract class CrudRepository<T> {
         try {
             Session session = openSession();
             // start a transaction
+
             transaction = session.beginTransaction();
             // save the person object
             operation.accept(session);
             // commit transaction
             transaction.commit();
+            session.close();
         } catch (Exception ex) {
             if (transaction != null) {
                 transaction.rollback();
@@ -63,6 +65,7 @@ public abstract class CrudRepository<T> {
 
     protected List<T> findAll(String query, Class<T> clazz) {
         try {
+
             return openSession().createQuery(query, clazz).list();
         } catch (Exception ex) {
             ex.printStackTrace();
