@@ -23,6 +23,15 @@ public class Review {
     @Column(name = "reviewComment")
     private String reviewComment;
 
+    public Review() {
+    }
+
+    public Review(Integer bookScore, Book book, String reviewComment) {
+        this.bookScore = bookScore;
+        this.book = book;
+        this.reviewComment = reviewComment;
+    }
+
     public Book getBook() {
         return book;
     }
