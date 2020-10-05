@@ -38,7 +38,7 @@ public class ReviewController implements Initializable {
             return;
         }
         ReviewAddController controller = (ReviewAddController) ViewLoader.load(getClass()
-                .getResource("/ui/review/add_book.fxml"), "Edit review");
+                .getResource("/ui/review/add_review.fxml"), "Edit review");
         controller.setEditable(review);
     }
 
