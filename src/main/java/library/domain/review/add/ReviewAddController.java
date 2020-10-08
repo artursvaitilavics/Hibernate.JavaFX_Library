@@ -41,15 +41,15 @@ public class ReviewAddController implements Initializable {
     public void setEditable(Review review) {
         System.out.println("    public void setEditable(Review review) {\n");
         this.editable = review;
-        this.id.setText(review.getId().toString());
-        this.bookScore.setText(review.getBookScore().toString());
-        this.book.setText(String.valueOf(review.getId()));
+        this.id.setText(String.valueOf(review.getId()));
+        this.bookScore.setText(String.valueOf(review.getBookScore()));
+        this.book.setText(review.getBook().getTitle());
         this.reviewComment.setText(review.getReviewComment());
     }
 
     @FXML
     private void addReview(ActionEvent event) {
-        String reviewIdText = id.getText();
+//        String reviewIdText = id.getText();
         String bookSoreText = bookScore.getText();
         String bookTitle = book.getText();
         String reviewCommentText = reviewComment.getText();
@@ -60,15 +60,15 @@ public class ReviewAddController implements Initializable {
         }
 
 
-        Integer bookId = Integer.parseInt(book.getId());
-        Book book1 = bookRepository.findOne(bookId);
+//        Integer bookId = Integer.parseInt(editable.getBook().getId());
+//        Book book1 = bookRepository.findOne(bookId);
         if (editable == null) {
-            reviewRepository.save(new Review(Integer.parseInt(bookSoreText), book1, reviewCommentText));
+            reviewRepository.save(new Review(Integer.parseInt(bookSoreText), editable.getBook(), reviewCommentText));
         } else {
             Review review = reviewRepository.findOne(editable.getId());
             review.setBookScore(Integer.parseInt(bookSoreText));
             review.getBook();
-            bookRepository.update(book1);
+            bookRepository.update(editable.getBook());
         }
         clearEntries();
         closeStage();

@@ -49,11 +49,6 @@ public class AuthorController implements Initializable {
     @FXML
     private void deleteAuthor(ActionEvent event) {
         Author author = table.getSelectionModel().getSelectedItem();
-//        Set<Book> books = author.getBooks();
-//        books.forEach(book -> {
-//            BookRepository bookRepository = new BookRepository();
-//            bookRepository.delete(book);
-//        });
         if (author == null) {
             return;
         }
@@ -75,7 +70,6 @@ public class AuthorController implements Initializable {
         table.getColumns().add(column1);
         table.getColumns().add(column2);
         table.getColumns().add(column3);
-//        table.getColumns().add(column4);
     }
 
     private void populateTable() {

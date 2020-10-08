@@ -67,6 +67,7 @@ public class ReviewController implements Initializable {
         TableColumn<Review, String> column4 = new TableColumn<>("Comment");
         column4.setCellValueFactory(new PropertyValueFactory<>("reviewComment"));
 
+
         table.getColumns().add(column1);
         table.getColumns().add(column2);
         table.getColumns().add(column3);
@@ -75,15 +76,8 @@ public class ReviewController implements Initializable {
     }
 
     private void populateTable() {
-        System.out.println("-----------------------------    private void populateTable() {");
         ObservableList<Review> list = FXCollections.observableArrayList();
-        System.out.println("-----------------------------        ObservableList<Review> list = FXCollections.observableArrayList();\n");
-
         list.addAll(reviewRepository.findAll());
-        System.out.println("-----------------------------        list.addAll(reviewRepository.findAll());\n");
-
         table.setItems(list);
-        System.out.println("-----------------------------        table.setItems(list);\n");
-
     }
 }
