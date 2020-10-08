@@ -1,5 +1,6 @@
 package library.domain.review;
 
+import library.domain.author.Author;
 import library.domain.book.Book;
 
 import javax.persistence.*;
@@ -15,13 +16,13 @@ public class Review {
     @Column(name = "bookScore")
     private Integer bookScore;
 
+    @Column(name = "reviewComment")
+    private String reviewComment;
+
     @ManyToOne
     @JoinColumn(name = "bookId")
     private Book book;
 
-
-    @Column(name = "reviewComment")
-    private String reviewComment;
 
     public Review() {
     }

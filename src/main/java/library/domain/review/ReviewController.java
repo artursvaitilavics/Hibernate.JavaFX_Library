@@ -18,7 +18,8 @@ public class ReviewController implements Initializable {
 
     private final ReviewRepository reviewRepository = new ReviewRepository();
 
-    @FXML private TableView<Review> table;
+    @FXML
+    private TableView<Review> table;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -28,7 +29,7 @@ public class ReviewController implements Initializable {
 
     @FXML
     private void addReview(ActionEvent event) {
-        ViewLoader.load(getClass().getResource("/ui/book/add_review.fxml"), "Add review");
+        ViewLoader.load(getClass().getResource("/ui/review/add_review.fxml"), "Add review");
     }
 
     @FXML
@@ -53,6 +54,7 @@ public class ReviewController implements Initializable {
     }
 
     private void configureTable() {
+
         TableColumn<Review, Long> column1 = new TableColumn<>("Id");
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -69,11 +71,19 @@ public class ReviewController implements Initializable {
         table.getColumns().add(column2);
         table.getColumns().add(column3);
         table.getColumns().add(column4);
+
     }
 
     private void populateTable() {
+        System.out.println("-----------------------------    private void populateTable() {");
         ObservableList<Review> list = FXCollections.observableArrayList();
+        System.out.println("-----------------------------        ObservableList<Review> list = FXCollections.observableArrayList();\n");
+
         list.addAll(reviewRepository.findAll());
+        System.out.println("-----------------------------        list.addAll(reviewRepository.findAll());\n");
+
         table.setItems(list);
+        System.out.println("-----------------------------        table.setItems(list);\n");
+
     }
 }

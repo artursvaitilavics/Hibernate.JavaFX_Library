@@ -24,4 +24,10 @@ public class MainController {
         Pane pane = FXMLLoader.load(getClass().getResource("/ui/author/list_author.fxml"));
         content.setCenter(pane);
     }
+
+    @FXML
+    public void switchReviewPanel(ActionEvent event) throws Exception{
+        Pane pane = FXMLLoader.load(getClass().getResource("/ui/review/list_reviews.fxml"));
+        content.setCenter(pane);
+    }
 }

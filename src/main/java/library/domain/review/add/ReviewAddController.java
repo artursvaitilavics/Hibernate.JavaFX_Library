@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import library.domain.author.Author;
-import library.domain.author.AuthorRepository;
 import library.domain.book.Book;
 import library.domain.book.BookRepository;
 import library.domain.review.Review;
@@ -41,10 +39,11 @@ public class ReviewAddController implements Initializable {
     }
 
     public void setEditable(Review review) {
+        System.out.println("    public void setEditable(Review review) {\n");
         this.editable = review;
         this.id.setText(review.getId().toString());
         this.bookScore.setText(review.getBookScore().toString());
-        this.book.setText(review.getBook().getTitle());
+        this.book.setText(String.valueOf(review.getId()));
         this.reviewComment.setText(review.getReviewComment());
     }
 
@@ -55,7 +54,7 @@ public class ReviewAddController implements Initializable {
         String bookTitle = book.getText();
         String reviewCommentText = reviewComment.getText();
 
-        if (reviewIdText.isEmpty() || bookSoreText.isEmpty() || bookTitle.isEmpty() || reviewCommentText.isEmpty()) {
+        if ( bookSoreText.isEmpty() || bookTitle.isEmpty() || reviewCommentText.isEmpty()) {
 //            //TODO show user alert that all fields have to be filled
             return;
         }
@@ -68,7 +67,7 @@ public class ReviewAddController implements Initializable {
         } else {
             Review review = reviewRepository.findOne(editable.getId());
             review.setBookScore(Integer.parseInt(bookSoreText));
-            review.setBook(book1);
+            review.getBook();
             bookRepository.update(book1);
         }
         clearEntries();
