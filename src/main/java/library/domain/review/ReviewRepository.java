@@ -13,6 +13,8 @@ public class ReviewRepository extends CrudRepository<Review> {
     }
 
     List<Review> findAll() {
+        System.out.println("----------------------List<Review> findAll() {");
         return super.findAll(HIBERNATE_SELECT_QUERY, Review.class);
+
     }
 }
