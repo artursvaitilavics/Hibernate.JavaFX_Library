@@ -19,7 +19,7 @@ public class DbSessionHolder {
     private static final List<Class> ENTITIES = asList(Author.class, Book.class, Review.class);
 
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "A0B1C2_ZZ_$aatttfff";
+    private static final String DB_PASSWORD = "Ed6130";
 
      private static final String DB_URL = "jdbc:mysql://localhost:3306/library?useSSL=false&serverTimezone=UTC";
      private static final String DB_DRIVER = "com.mysql.jdbc.Driver";

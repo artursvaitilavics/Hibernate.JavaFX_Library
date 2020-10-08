@@ -1,5 +1,7 @@
 package library.repository;
 
+//import configuration.DbSessionHolder;
+import library.configuration.DbSessionHolder;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -7,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-import library.configuration.DbSessionHolder;
 
 public abstract class CrudRepository<T> {
 
