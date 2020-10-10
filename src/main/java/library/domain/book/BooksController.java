@@ -48,7 +48,8 @@ public class BooksController implements Initializable {
         if (book == null) {
             return;
         }
-        bookRepository.delete(book);
+//        bookRepository.delete(book);
+        bookRepository.delete(book.getId());
         populateTable();
     }
 

@@ -55,7 +55,7 @@ public class AuthorAddController implements Initializable {
             Author author1 = authorRepository.findOne(editable.getId());
             author1.setName(authorName);
             author1.setSurName(authorSurName);
-            authorRepository.update(author1);
+            authorRepository.merge(author1);
         }
         clearEntries();
         closeStage();

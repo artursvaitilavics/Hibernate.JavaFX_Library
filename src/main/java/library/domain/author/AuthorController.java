@@ -52,7 +52,7 @@ public class AuthorController implements Initializable {
         if (author == null) {
             return;
         }
-        authorRepository.delete(author);
+        authorRepository.delete(author.getId());
         populateTable();
     }
 

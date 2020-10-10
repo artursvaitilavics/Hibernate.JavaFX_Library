@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import library.domain.book.Book;
 import library.domain.book.BookRepository;
 import library.domain.review.Review;
 import library.domain.review.ReviewRepository;
@@ -68,7 +67,7 @@ public class ReviewAddController implements Initializable {
             Review review = reviewRepository.findOne(editable.getId());
             review.setBookScore(Integer.parseInt(bookSoreText));
             review.getBook();
-            bookRepository.update(editable.getBook());
+            bookRepository.merge(editable.getBook());
         }
         clearEntries();
         closeStage();

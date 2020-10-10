@@ -3,6 +3,8 @@ package library.domain.book;
 import java.util.List;
 import library.repository.CrudRepository;
 
+import javax.persistence.Query;
+
 
 public class BookRepository extends CrudRepository<Book> {
 
@@ -14,5 +16,14 @@ public class BookRepository extends CrudRepository<Book> {
 
     List<Book> findAll() {
         return super.findAll(HIBERNATE_SELECT_QUERY, Book.class);
+    }
+
+
+    public void delete(Integer id){
+        runInTransaction(session -> {
+            Query query = session.createQuery("delete from Book book where book.id = :bookId")
+                    .setParameter("bookId", id);
+            query.executeUpdate();
+        });
     }
 }

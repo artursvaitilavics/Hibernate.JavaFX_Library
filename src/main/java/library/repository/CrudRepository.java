@@ -1,6 +1,7 @@
 package library.repository;
 
 //import configuration.DbSessionHolder;
+
 import library.configuration.DbSessionHolder;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -27,8 +28,8 @@ public abstract class CrudRepository<T> {
         }
     }
 
-    public void update(T entity) {
-        runInTransaction((session) -> session.update(entity));
+    public void merge(T entity) {
+        runInTransaction((session) -> session.merge(entity));
     }
 
     public void delete(T entity) {
@@ -44,7 +45,7 @@ public abstract class CrudRepository<T> {
         }
     }
 
-    private void runInTransaction(Consumer<Session> operation) {
+    public void runInTransaction(Consumer<Session> operation) {
         Transaction transaction = null;
         try {
             Session session = openSession();

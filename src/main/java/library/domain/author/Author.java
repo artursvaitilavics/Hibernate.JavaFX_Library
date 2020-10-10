@@ -23,7 +23,7 @@ public class Author {
     @Column(name = "authorSurname")
     private String surName;
 
-    @OneToMany(mappedBy = "author", orphanRemoval = true)
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private Set<Book> books = new HashSet<>();
 
     public Author() {

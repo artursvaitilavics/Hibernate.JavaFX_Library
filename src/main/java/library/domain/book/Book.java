@@ -25,7 +25,7 @@ public class Book {
     private String description;
 
 
-    @OneToMany(mappedBy = "book", orphanRemoval = true)
+    @OneToMany(mappedBy = "book")
     private Set<Review> reviews = new HashSet<>();
 
     @ManyToOne
