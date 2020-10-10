@@ -66,6 +66,7 @@ public class ReviewAddController implements Initializable {
             Review review = reviewRepository.findOne(editable.getId());
             review.setBookScore(Integer.parseInt(bookSoreText));
             review.setBook(editable.getBook());
+            review.setReviewComment(reviewCommentText);
             reviewRepository.merge(review);
         }
         clearEntries();
