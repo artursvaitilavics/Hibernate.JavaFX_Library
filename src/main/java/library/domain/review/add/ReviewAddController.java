@@ -3,14 +3,21 @@ package library.domain.review.add;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import library.domain.book.Book;
 import library.domain.book.BookRepository;
+import library.domain.main.MainController;
 import library.domain.review.Review;
+import library.domain.review.ReviewController;
 import library.domain.review.ReviewRepository;
+import sample.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,6 +25,9 @@ public class ReviewAddController implements Initializable {
 
     private final BookRepository bookRepository = new BookRepository();
     private final ReviewRepository reviewRepository = new ReviewRepository();
+
+
+
 
     //    @FXML
 //    private JFXTextField id;
@@ -32,11 +42,16 @@ public class ReviewAddController implements Initializable {
     private StackPane rootPane;
 
     private Review editable;
-//    private Integer bookId;
+
+    private  Runnable closeDialogCallback;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+    }
+
+    public void addPostOperationCallback(Runnable runnable){
+        this.closeDialogCallback = runnable;
     }
 
     public void setEditable(Review review) {
@@ -47,7 +62,7 @@ public class ReviewAddController implements Initializable {
     }
 
     @FXML
-    private void addReview(ActionEvent event) {
+    private void addReview(ActionEvent event)  {
         String bookSoreText = bookScore.getText();
         String bookId = this.bookId.getText();
         String reviewCommentText = reviewComment.getText();
@@ -69,8 +84,10 @@ public class ReviewAddController implements Initializable {
             review.setReviewComment(reviewCommentText);
             reviewRepository.merge(review);
         }
+
         clearEntries();
         closeStage();
+        closeDialogCallback.run();
     }
 
     @FXML
@@ -80,7 +97,6 @@ public class ReviewAddController implements Initializable {
 
     private void clearEntries() {
         editable = null;
-//        id.clear();
         bookScore.clear();
     }
 

@@ -26,9 +26,15 @@ public class AuthorAddController implements Initializable {
 
     private Author editable;
 
+    private  Runnable closeDialogCallback;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+    }
+
+    public void addPostOperationCallback(Runnable runnable){
+        this.closeDialogCallback = runnable;
     }
 
     public void setEditable(Author author) {
@@ -59,6 +65,7 @@ public class AuthorAddController implements Initializable {
         }
         clearEntries();
         closeStage();
+        closeDialogCallback.run();
     }
 
     @FXML

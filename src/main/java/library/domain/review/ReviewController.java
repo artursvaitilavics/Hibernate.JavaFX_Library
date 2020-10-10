@@ -29,7 +29,9 @@ public class ReviewController implements Initializable {
 
     @FXML
     private void addReview(ActionEvent event) {
-        ViewLoader.load(getClass().getResource("/ui/review/add_review.fxml"), "Add review");
+        ReviewAddController controller = (ReviewAddController) ViewLoader
+        .load(getClass().getResource("/ui/review/add_review.fxml"), "Add review");
+        controller.addPostOperationCallback(this::populateTable);
     }
 
     @FXML
@@ -41,6 +43,7 @@ public class ReviewController implements Initializable {
         ReviewAddController controller = (ReviewAddController) ViewLoader.load(getClass()
                 .getResource("/ui/review/add_review.fxml"), "Edit review");
         controller.setEditable(review);
+        controller.addPostOperationCallback(this::populateTable);
     }
 
     @FXML
@@ -75,9 +78,11 @@ public class ReviewController implements Initializable {
 
     }
 
-    private void populateTable() {
+    public void populateTable() {
         ObservableList<Review> list = FXCollections.observableArrayList();
         list.addAll(reviewRepository.findAll());
         table.setItems(list);
     }
+
+
 }

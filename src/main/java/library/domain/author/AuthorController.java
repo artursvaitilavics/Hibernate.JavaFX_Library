@@ -32,7 +32,9 @@ public class AuthorController implements Initializable {
 
     @FXML
     private void addAuthor(ActionEvent event) {
-        ViewLoader.load(getClass().getResource("/ui/author/add_author.fxml"), "Add add_author");
+        AuthorAddController controller = (AuthorAddController) ViewLoader.load(getClass()
+                .getResource("/ui/author/add_author.fxml"), "Add author");
+        controller.addPostOperationCallback(this::populateTable);
     }
 
     @FXML
@@ -44,6 +46,8 @@ public class AuthorController implements Initializable {
         AuthorAddController controller = (AuthorAddController) ViewLoader.load(getClass()
                 .getResource("/ui/author/add_author.fxml"), "Edit author");
         controller.setEditable(author);
+        controller.addPostOperationCallback(this::populateTable);
+
     }
 
     @FXML
