@@ -19,12 +19,12 @@ public class ReviewAddController implements Initializable {
     private final BookRepository bookRepository = new BookRepository();
     private final ReviewRepository reviewRepository = new ReviewRepository();
 
-//    @FXML
+    //    @FXML
 //    private JFXTextField id;
     @FXML
     private JFXTextField bookScore;
     @FXML
-    private JFXTextField book;
+    private JFXTextField bookId;
     @FXML
     private JFXTextField reviewComment;
 
@@ -32,7 +32,7 @@ public class ReviewAddController implements Initializable {
     private StackPane rootPane;
 
     private Review editable;
-    private Integer bookId;
+//    private Integer bookId;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -42,24 +42,23 @@ public class ReviewAddController implements Initializable {
     public void setEditable(Review review) {
         this.editable = review;
         this.bookScore.setText(String.valueOf(review.getBookScore()));
-        this.book.setText(review.getBook().getTitle());
+        this.bookId.setText(String.valueOf(review.getBook().getId()));
         this.reviewComment.setText(review.getReviewComment());
-        this.bookId = review.getBook().getId();
     }
 
     @FXML
     private void addReview(ActionEvent event) {
         String bookSoreText = bookScore.getText();
-        String bookTitle = book.getText();
+        String bookId = this.bookId.getText();
         String reviewCommentText = reviewComment.getText();
 
-        if ( bookSoreText.isEmpty() || bookTitle.isEmpty() || reviewCommentText.isEmpty()) {
+        if (bookSoreText.isEmpty() || bookId.isEmpty() || reviewCommentText.isEmpty()) {
             //TODO show user alert that all fields have to be filled
             return;
         }
 
 
-        Book book2 = bookRepository.findOne(bookId);
+        Book book2 = bookRepository.findOne(Integer.parseInt(bookId));
 
 
         if (editable == null) {
@@ -67,7 +66,7 @@ public class ReviewAddController implements Initializable {
         } else {
             Review review = reviewRepository.findOne(editable.getId());
             review.setBookScore(Integer.parseInt(bookSoreText));
-            review.getBook();
+            review.setBook(book2);
             bookRepository.merge(editable.getBook());
         }
         clearEntries();

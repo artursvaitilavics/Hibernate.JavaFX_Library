@@ -19,8 +19,6 @@ public class BookRepository extends CrudRepository<Book> {
     List<Book> findAll() {
         return super.findAll(HIBERNATE_SELECT_QUERY, Book.class);
     }
-
-
     public void delete(Integer id){
         findOne(id).getReviews().forEach(review -> {
             ReviewRepository reviewRepository = new ReviewRepository();
@@ -32,5 +30,6 @@ public class BookRepository extends CrudRepository<Book> {
                     .setParameter("bookId", id);
             query.executeUpdate();
         });
+
     }
 }
