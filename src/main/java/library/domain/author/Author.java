@@ -1,6 +1,7 @@
 package library.domain.author;
 
 import library.domain.book.Book;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -23,7 +24,7 @@ public class Author {
     @Column(name = "authorSurname")
     private String surName;
 
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Book> books = new HashSet<>();
 
     public Author() {

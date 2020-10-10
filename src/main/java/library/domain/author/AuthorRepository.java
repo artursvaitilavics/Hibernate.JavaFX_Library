@@ -1,4 +1,6 @@
 package library.domain.author;
+
+import library.domain.book.BookRepository;
 import library.repository.CrudRepository;
 
 import javax.persistence.Query;
@@ -11,7 +13,12 @@ public class AuthorRepository extends CrudRepository<Author> {
         return super.findOne(id, Author.class);
     }
 
-    public void delete(Integer id){
+    public void delete(Integer id) {
+        findOne(id).getBooks().forEach(book -> {
+            BookRepository bookRepository = new BookRepository();
+            bookRepository.delete(book.getId());
+        });
+
         runInTransaction(session -> {
             Query query = session.createQuery("delete from Author author where author.id = :authorId")
                     .setParameter("authorId", id);
