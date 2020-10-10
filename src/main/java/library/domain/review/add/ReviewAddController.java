@@ -60,14 +60,13 @@ public class ReviewAddController implements Initializable {
 
         Book book2 = bookRepository.findOne(Integer.parseInt(bookId));
 
-
         if (editable == null) {
             reviewRepository.save(new Review(Integer.parseInt(bookSoreText), book2, reviewCommentText));
         } else {
             Review review = reviewRepository.findOne(editable.getId());
             review.setBookScore(Integer.parseInt(bookSoreText));
-            review.setBook(book2);
-            bookRepository.merge(editable.getBook());
+            review.setBook(editable.getBook());
+            reviewRepository.merge(review);
         }
         clearEntries();
         closeStage();
